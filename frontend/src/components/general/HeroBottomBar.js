@@ -1,0 +1,40 @@
+import * as React from "react";
+import { Text } from "react-native";
+import {
+  BottomNavigation,
+  BottomNavigationTab,
+  Icon,
+} from "@ui-kitten/components";
+import { COLOR } from "../../styles";
+
+export default function HeroBottomBar({ navigation, state }) {
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+  return (
+    <BottomNavigation
+      style={{
+        paddingBottom: 10,
+        backgroundColor: COLOR.brown,
+      }}
+      selectedIndex={state.index}
+      onSelect={(index) => navigation.navigate(state.routeNames[index])}
+    >
+      <BottomNavigationTab
+        title={() => <Text style={{ color: COLOR.white }}>Home</Text>}
+        icon={(props) => <Icon {...props} name="home-outline" />}
+      />
+      <BottomNavigationTab
+        title={() => <Text style={{ color: COLOR.white }}>QuestBoard</Text>}
+        icon={(props) => <Icon {...props} name="clipboard-outline" />}
+      />
+      <BottomNavigationTab
+        title={() => <Text style={{ color: COLOR.white }}>History</Text>}
+        icon={(props) => <Icon {...props} name="archive-outline" />}
+      />
+      <BottomNavigationTab
+        title={() => <Text style={{ color: COLOR.white }}>Profile</Text>}
+        icon={(props) => <Icon {...props} name="person-outline" />}
+      />
+    </BottomNavigation>
+  );
+}
